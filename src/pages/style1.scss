@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+
+
+
+.ul2.accordion-list {
+ 
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  margin: 0;
+  list-style: none;
+  background-color: #121212;
+
+  .li2 {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: #121212;
+    padding: 10px;
+    margin: 0 auto 15px auto;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    cursor: pointer;
+    
+    &.active {
+      .h33 {
+        &:after {
+          transform: rotate(45deg);
+        }
+      }
+    }
+    
+    .h33 {
+      color: #ffffff !important;
+      font-weight: 700;
+      position: relative;
+      display: block;
+      width: 100%;
+      height: auto;
+      padding: 0 0 0 5px;
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      
+      &:after {
+        content: url("img/cross-svgrepo-com.svg");
+        font-family: "material-design-iconic-font";
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #ffffff !important;
+        transition: all 0.3s ease-in-out;
+        font-size: 18px;
+      }
+    }
+    
+    div.answer {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+      
+      .p2 {
+        color: #FFF;
+        position: relative;
+        display: block;
+        font-weight: 300;
+        padding: 20px 10px 0px 5px;
+        cursor: pointer;
+        line-height: 200%;
+        margin: 0 0 15px 0;
+        font-size: 14px;
+      }
+    }
+  }
+}
