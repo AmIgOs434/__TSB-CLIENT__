@@ -55,8 +55,7 @@ useEffect(() => {
 включая роскошный кашемир и шерсть.</h6>
                                  
    </div>
- 
-
+   <div class="spinner"></div>
 
     <section class="shop_grid_area section-padding-0">
 

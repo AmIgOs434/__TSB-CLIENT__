@@ -8,7 +8,7 @@ import App from './App';
 
 export const Context = createContext(null)
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById('root1'))
 
 root.render(
   

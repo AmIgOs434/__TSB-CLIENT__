@@ -31,6 +31,7 @@ function DevicePage() {
   const [sizeId,setsize,setsizeRef] =useState(null)
   const [get_color,setgetColor] =useState([])
     const [colorId1,setcolorId1,colorId1Ref] =useState(null)
+    const [basket_device_id,setbasket_device_id,basket_device_idRef] =useState(null)
   const [device_,setDevice_] =useState()
 
   const [activeButton, setActiveButton,activeButtonRef] = useState(null);
@@ -70,6 +71,7 @@ function DevicePage() {
 
         if(storedToken_1===null ){
           localStorage.removeItem('token')
+        
           let data;
           let date = new Date()
           const res = await axios.get('https://geolocation-db.com/json/')
@@ -109,8 +111,10 @@ function DevicePage() {
         const price = device.price
         const name = device.name
         const device_ = await Create_Basket_Device(deviceId, bask,price,activeButton,sizeId,colorId1Ref.current,setimg1Ref.current,name,activeSvgRef.current
-          
+       
       ).then(response => {
+  
+        setbasket_device_id(response.data.id)
       getDevice(response)
   })
       }else{
@@ -273,6 +277,8 @@ if(activeButton===null){
 
     setdesc(response.data[0].img10)
 
+    setcolorId1(response.data[0].id)
+
     setquantity_color(response.data[0].quantity);
     setactiveSvg(response.data[0].color);
 
@@ -319,8 +325,9 @@ if(activeButton===null){
     setquantity(quantity1)
   }
   const update = async(quantity1,price) => {
-    
-    const dd = await Device_Basket_Put(id,quantity1,price,sizeId,activeSvgRef.current) 
+
+
+    const dd = await Device_Basket_Put(id,basket_device_idRef.current,quantity1,price,sizeId,colorId1Ref.current) 
   
   }
   const updateQuantity_minus = async(quantity,price,device) => {

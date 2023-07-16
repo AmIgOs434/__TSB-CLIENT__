@@ -77,7 +77,7 @@ const Fashion = ()=>{
   <video class='video2'  src={video} loop  autoplay='true' muted='true'>
    </video>
 
-<div class="but_1 " ><a href="/" class="ddott ml-5 ">КОЛЛЕКЦИЯ</a><a href="#" class="ddott " onClick={()=> console.log(user.isAdmin)}>ОБРАЗЫ</a></div>
+<div class="but_1 " ><a href="/" class="ddott ml-5 ">КОЛЛЕКЦИЯ</a><a href="#" class="ddott " >ОБРАЗЫ</a></div>
 
 
   </div>

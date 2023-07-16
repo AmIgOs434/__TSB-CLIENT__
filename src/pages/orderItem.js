@@ -6,15 +6,17 @@ import { useNavigate } from 'react-router-dom';
 
 import useState from 'react-usestateref'
 import { get_item_order } from '../http/deviceAPI';
+import { DEVICE_ROUTE } from '../utils/consts';
 const OrderItem = ({order})=>{
-
+    const navigate = useNavigate()
     const [col_dev,setcol_dev,setcol_devRef] = useState()
     const [className1,SetclassName1,SetclassName1Ref] = useState()
     const [items,SetItems,SetItemsRef] = useState(null)
     const [data,Setdata,SetdataRef] = useState(null)
+
     const get_items = async()=>{
      
-
+      
         let date = new Date(order.createdAt)
             let options = {
             year: "numeric",
@@ -24,8 +26,9 @@ const OrderItem = ({order})=>{
         let formatted = date.toLocaleDateString('ru-RU', options)
         Setdata(formatted)
        
-        if(items=== null){
+        if(SetItemsRef.current=== null){
            const response =await get_item_order(order.id) 
+    
             SetItems(response)
           
 
@@ -41,7 +44,7 @@ const OrderItem = ({order})=>{
 useEffect(()=>{
     get_items()
     
-const className1 = order.status === 'Товар получен' ? "bg_color_green" : "";
+const className1 = order.status === 'Ваш заказ успешно доставлен' ? "bg_color_green" : "";
 SetclassName1(className1)
 
 })
@@ -82,7 +85,7 @@ SetclassName1(className1)
   <div> 
 
   <div class='order_item_img'>
-      <img src={item.img}/>
+      <img src={item.img}  onClick={()=> navigate(DEVICE_ROUTE + '/' + item.deviceId)}/>
       <div class='order_item_info_0'>
         <div class='displa_'>
 

@@ -35,6 +35,14 @@ body{
 	font-family: 'font_2';
 }
 
+
+
+
+
+
+
+
+
 .m{
 	padding-left: 35px;
 	margin-top:-40px
@@ -67,7 +75,15 @@ ul li { display: inline !important}
 	text-decoration: none;
 	margin: 15px 0;
 }
-
+.mt-50{
+	margin-top:45vh
+}
+.zagruzka{		
+	background-image: url("../../public/assets/img/product-img/im2.jpg");
+	background-repeat: no-repeat;
+	width: 100px;
+	height: auto;
+}
 button {
 	border-radius: 20px;
 	border: 1px solid #ffffff;
@@ -1321,6 +1337,9 @@ display:none
 .img_1_{
 	border-radius: 5px;
 }
+.bg-color{
+	background-color: #121212;
+}
 .gx-2{
 	--bs-gutter-x: 0.3rem;
 }
@@ -1406,6 +1425,9 @@ display:none
 
 .mleft{
 	margin-left: 0%;
+}
+.mleft1{
+	margin-left: 5.5%;
 }
 .mar_rig {
     width: 20px;
@@ -2080,6 +2102,7 @@ cursor: pointer;
 	margin-left: 30px;
 }
 .marl{
+	background-position: center center;
 	margin-left: 3px;
 }
 .App {
@@ -2087,7 +2110,10 @@ cursor: pointer;
 	text-align: center;
   }
 
-
+.width_75{
+	font-size: 10px;
+	width: 75vw;
+}
   .dostav {
     overflow: hidden;
     object-fit: cover;
@@ -2321,7 +2347,7 @@ div.horisontal-line{
 }
   div.vertical-line{
 	position: absolute;
-	margin-left: 48.1%;
+	margin-left: 51.1%;
 	margin-top: 1.5%;
 	float: left;
 	width: 0px; /* Use only border style */
@@ -2384,8 +2410,8 @@ margin-bottom: 10px;
     flex: 0 0 auto;
     width: 33.33333333%;
 }
-.bg_color_green{
-	background-color: #75d785!important;
+.bg_color_green {
+    background-color: #13cd31!important;
 }
 .no_orders{
 	display:none
@@ -2653,7 +2679,8 @@ font-size: 17px;
 	height: 65px;
 }
 .display_Flex {
-    margin-top: 6px;
+	font-size: 12px;
+    margin-top: 9px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -2736,7 +2763,7 @@ border-top: 1px solid #eee;
     align-items: center;
 }
 .contain{
-	background-color: #121212;
+	background-color: #121212!important;
 	margin: 7% 10% 10% 10%;
 margin-bottom: 15%;
 }
@@ -3591,7 +3618,10 @@ img {
 
 }
 @media only screen and (max-width: 1170px) {
-
+	.marl {
+		padding-left: 200px;
+		
+	}
 	.container_basket {
 	
 		margin-left: 15px;
@@ -3836,6 +3866,10 @@ img {
 }
 
 @media only screen and (max-width: 520px) {
+	#but_email{
+		padding: 0px 15px 0px 15px;
+		width: 35%;
+	}
 	.promo_inp {
 
 		width: 150px;
@@ -3876,6 +3910,7 @@ img {
   margin-left: 5px;
 	}
 	.display_Flex {
+		font-size: 11.5px;
 		font-size: 12px;
 		margin-top: 9px;
 

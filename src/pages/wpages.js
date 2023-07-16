@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import $ from 'jquery'
 const Wpages =  ()=>{
 useEffect(()=>{
+  $('body').removeClass('bg-color')
   var cl = $('.class')
     var mar = $('.mar')
     var out = $('.out')

@@ -38,12 +38,12 @@ export const check_admin = async () => {
 
 
 export const fetchUsers = async () => {
-    const {data} = await $host.get('api/user/user_info', )
+    const {data} = await $authHost.get('api/user/user_info', )
     return data
 }
 
 export const createLove = async (userId,deviceId) => {
-    const {data} = await $host.post('api/user/create_love',
+    const {data} = await $authHost.post('api/user/create_love',
     {
         userId,deviceId
     } 
@@ -52,49 +52,49 @@ export const createLove = async (userId,deviceId) => {
 }
 
 export const fetchLove = async (userId) => {
-    const {data} = await $host.get('api/user/get_love/2',{ params: { userId:userId } })
+    const {data} = await $authHost.get('api/user/get_love/2',{ params: { userId:userId } })
     return data
 }
 
 export const fetchLoveone = async (userId,deviceId) => {
-    const {data} = await $host.get('api/user/get_loveone/1', { params: { userId:userId,deviceId:deviceId } }
+    const {data} = await $authHost.get('api/user/get_loveone/1', { params: { userId:userId,deviceId:deviceId } }
      )
     return data
 }
 
 export const getUserInfo = async () => {
-    const data = await $host.get('api/user/user_info'
+    const data = await $authHost.get('api/user/user_info'
      )
     return data
 }
 
 export const deleteUser = async (id) => {
-    const data = await $host.delete('api/user/'+ id
+    const data = await $authHost.delete('api/user/'+ id
      )
     return data
 }
 
 export const GetUser = async (id) => {
-    const data = await $host.get('api/user/'+ id
+    const data = await $authHost.get('api/user/'+ id
      )
     return data
 }
 
 export const delLoveone = async (userId,deviceId) => {
-    const {data} = await $host.delete('api/user/del_loveone/1', { params: { userId:userId,deviceId:deviceId } }
+    const {data} = await $authHost.delete('api/user/del_loveone/1', { params: { userId:userId,deviceId:deviceId } }
      )
     return data
 }
 
 
 export const fetchUserByEmail = async (id,email) => {
-    const data = await $host.get('api/user/get_by_email/'+id,{ params: { email:email} }
+    const data = await $authHost.get('api/user/get_by_email/'+id,{ params: { email:email} }
      )
     return data
 }
 
 export const PostMessage = async (email,kod) => {
-    const data = await $host.post('api/user/message' ,{
+    const data = await $authHost.post('api/user/message' ,{
         email:email,
         tema: 'Добро пожаловать в TSB',
         kod:kod,
@@ -103,12 +103,12 @@ export const PostMessage = async (email,kod) => {
     return data
 }
 export const putUserStatus = async (id) => {
-    const data = await $host.put('api/user/status/'+id
+    const data = await $authHost.put('api/user/status/'+id
      )
     return data
 }
 export const putUserEmail = async (id,email) => {
-    const data = await $host.put('api/user/status/'+id,{
+    const data = await $authHost.put('api/user/status/'+id,{
         email:email,
     
     }
@@ -142,6 +142,8 @@ export const putPhone= async (id,phone) => {
     })
     return data1
 }
+
+
 
 export const get_peomo_by_ident= async (id,identific) => {
   

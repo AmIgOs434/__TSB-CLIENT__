@@ -24,13 +24,14 @@ import Love from "./pages/love"
 
 export const adminRoutes = [
     {
-        path: CHECK_PROMO_ROUTE,
-        Component: Promo
-    },
-    {
         path: ADMIN_ROUTE,
         Component: Admin
     },
+    {
+        path: CHECK_PROMO_ROUTE,
+        Component: Promo
+    },
+
     {
         path: ORDER_WORK_ROUTE + '/:id',
         Component: Order_Work

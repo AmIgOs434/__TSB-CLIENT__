@@ -8,7 +8,7 @@ import Wpages from './wpages'
 import jwt_decode from "jwt-decode"
 import useState from 'react-usestateref'
 import OrderItem from './orderItem'
-import { Order_getAllItem } from '../http/deviceAPI'
+import { Order_getAllItem, get_item_order } from '../http/deviceAPI'
 function Order (){
 
   const [orders,SetOrders,SetOrdersRef] = useState(null)
@@ -16,11 +16,12 @@ function Order (){
 
 
   const get_orders = async()=>{
+    const user_ = localStorage.getItem('token')
     if(user_!== null){
       const user = jwt_decode(user_)
   
       const orders = await Order_getAllItem(user.id) 
-
+    
       SetOrders(orders)
       if(orders.data.length===0){
         $('.no_orders').addClass('display_flex_on')
@@ -79,11 +80,11 @@ function Order (){
    </div>
    
   </div>
-{SetOrdersRef.current?.data?.map(order=>
 
 
-<OrderItem key={order.id} order={order}/>
+{SetOrdersRef.current?.data.map(order1=>
 
+<OrderItem key={order1.id} order={order1} />
 
 )}
 

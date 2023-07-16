@@ -11,6 +11,7 @@ import { LOGIN_ROUTE} from "../utils/consts";
 import {Context} from "../index";
 import  { useContext} from 'react';
 import jwt_decode from "jwt-decode";
+import { check_admin } from '../http/userAPI';
 function NavBar() {
   const navigate = useNavigate()
   const{user}= useContext(Context)
@@ -33,6 +34,18 @@ const click1 = async () => {
 }
 
 
+const adminka = async ()=>{
+
+  check_admin().then(data => {
+                
+    user.setIsAdmin(true)
+   
+})
+
+navigate(ADMIN_ROUTE)
+
+}
+
 
 
 const login = async () => {
@@ -41,7 +54,6 @@ const login = async () => {
 
 }
   useEffect(() => {
-
 
     
     var hours = 24; 
@@ -87,8 +99,7 @@ if (user.email ==='amigo111@gmail.com'){
   out.removeClass('display_')
   out.addClass('display_yes')
   cla.addClass('display_')
-
-
+ 
   if(user.role==="ADMIN"){
   adminka.addClass('display_adm')
   $('.svg1_glav').addClass('svg1_glav_on')
@@ -288,11 +299,11 @@ $(window).scroll(function() {
       </li> */}
 
 
-      <li><a href="basket"><i class="fa fa-suitcase"></i> <div class='home'>Корзина </div></a></li>
-      <li><a href="love"><i class="fa fa-heart"></i><div class='home'>Любимые </div> </a>
+      <li><a href="/basket"><i class="fa fa-suitcase"></i> <div class='home'>Корзина </div></a></li>
+      <li><a href="/love"><i class="fa fa-heart"></i><div class='home'>Любимые </div> </a>
 
       </li>
-      <li><a href="order"><i class="fa fa-user"></i><div class='home'>Заказы </div> </a></li>
+      <li><a href="/order"><i class="fa fa-user"></i><div class='home'>Заказы </div> </a></li>
       <li><a href="/FQI"><i class="fa fa-envelope"></i> <div class='home'>FQI </div></a></li>
     </ul>
     <div class="jquery-accordion-menu-footer">
@@ -337,7 +348,7 @@ $(window).scroll(function() {
         <svg width="30" height="23" class='float_left2 out ' onClick={out}viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 12L13 12"stroke-width="1.656" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M18 15L20.913 12.087V12.087C20.961 12.039 20.961 11.961 20.913 11.913V11.913L18 9"stroke-width="1.656" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M16 5V4.5V4.5C16 3.67157 15.3284 3 14.5 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H14.5C15.3284 21 16 20.3284 16 19.5V19.5V19" stroke-width="1.656" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
         
         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- class="bi bi-suit-heart-fill mar  mar_rig float_left2 height adminka_" onClick={() => navigate(ADMIN_ROUTE)} cursor='pointer' width="30" height="30"  viewBox="0 0 512.000000 512.000000"
+ class="bi bi-suit-heart-fill mar  mar_rig float_left2 height adminka_" onClick={() => adminka()} cursor='pointer' width="30" height="30"  viewBox="0 0 512.000000 512.000000"
  preserveAspectRatio="xMidYMid meet">
 
 <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"

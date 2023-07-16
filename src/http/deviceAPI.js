@@ -2,7 +2,7 @@ import {$authHost, $host} from "./index";
 
 
 export const putGlavStr = async (video,photo1,photo2,photo3,photo4,photo5,photo6) => {
-    const {data} = await $host.put('api/device/put_Glav_Str/1', {
+    const {data} = await $authHost.put('api/device/put_Glav_Str/1', {
         video:video,
         photo1:photo1,
         photo2:photo2,
@@ -29,7 +29,7 @@ export const createType = async (type) => {
 
 
 export const delPromo = async (id) => {
-    const {data} = await $host.delete('api/user/delpromo/'+ id )
+    const {data} = await $authHost.delete('api/user/delpromo/'+ id )
     return data
 }
 
@@ -38,7 +38,7 @@ export const createPromo = async (promo) => {
     return data
 }
 export const fetchPromo = async () => {
-    const {data} = await $host.get('api/user/get_promo/1')  
+    const {data} = await $authHost.get('api/user/get_promo/1')  
     return data
 }
 
@@ -74,7 +74,7 @@ export const createBasketDevice = async (basketDevice) => {
 } 
 
 export const fetchBasketDevice = async (id, basketId ,deviceId) => {
-    const {data} = await $host.get('api/device/basket/'+ id, {params: {
+    const {data} = await $authHost.get('api/device/basket/'+ id, {params: {
         basketId, deviceId
     }})
     return data
@@ -82,7 +82,7 @@ export const fetchBasketDevice = async (id, basketId ,deviceId) => {
 
 
 export const fetchAllBasketDevices = async () => {
-    const {data} = await $host.get('api/device/basket')
+    const {data} = await $authHost.get('api/device/basket')
     return data
 } 
 
@@ -106,7 +106,7 @@ export const fetchOneDevice = async (id) => {
 }
 
 export const delDevice = async (id) => {
-    const {data} = await $host.delete('api/device/' + id)
+    const {data} = await $authHost.delete('api/device/' + id)
     return data
 }
 
@@ -129,13 +129,13 @@ export const fetch_One_Color = async (id) => {
 
 export const fetch2_Basket = async (id,id1,basketId) => {
   
-    const data1 = await $host.get('api/device/basket/get_2/' + id, { params: { sizeId:id1,basketId:basketId} })
+    const data1 = await $authHost.get('api/device/basket/get_2/' + id, { params: { sizeId:id1,basketId:basketId} })
     return data1
 }
 
 export const fetch3_Basket = async (id,sizeId,color,basketId) => {
   
-    const data1 = await $host.get('api/device/basket/get_3/' + id, { params: { sizeId:sizeId,color:color,basketId:basketId} })
+    const data1 = await $authHost.get('api/device/basket/get_3/' + id, { params: { sizeId:sizeId,color:color,basketId:basketId} })
     return data1
 }
 
@@ -174,13 +174,13 @@ export const delete_Basket_device = async (id) => {
 
 export const fetch_my_device= async (id) => {
   
-    const data1 = await $host.get('api/device/' + id)
+    const data1 = await $authHost.get('api/device/' + id)
     return data1
 }
 
 export const put_my_device= async (id,name0,price0,typeId0) => {
   
-    const data1 = await $host.put('api/device/' + id, {
+    const data1 = await $authHost.put('api/device/' + id, {
         name: name0,
         price: price0,
         typeId: typeId0,
@@ -205,6 +205,7 @@ export const CreateOrder= async (FIO,address,final_price,email,phone,status,comm
         phone:phone,
         status:status,
         comment:comment,
+        
         user:user,
  
     })
@@ -228,7 +229,7 @@ export const getOrder= async (id) => {
 }
 export const getOrderById= async (id) => {
   
-    const data1 = await $host.get('api/order/' + id)
+    const data1 = await $authHost.get('api/order/' + id)
     return data1
 }
 
@@ -248,7 +249,7 @@ export const put_Color= async (id,quantity) => {
 
 
 export const Create_Basket_Device = async (deviceId,basketId,final_price,size,sizeId,colorId,img,name,color) => {
-    const data1 = await $host.post('api/device/basket' , {
+    const data1 = await $authHost.post('api/device/basket' , {
         deviceId: deviceId,
         basketId: basketId,
         final_price :final_price,
@@ -264,24 +265,25 @@ export const Create_Basket_Device = async (deviceId,basketId,final_price,size,si
 }
 
 
-export const Device_Basket_Put = async (id,quantity,final_price,sizeId,color) => {
-    const data1 = await $host.put('api/device/basket/put/'+id ,{
+export const Device_Basket_Put = async (id,baskid,quantity,final_price,sizeId,colorId) => {
+    const data1 = await $authHost.put('api/device/basket/put/'+id ,{
+        basketId1:baskid,
         quantity:quantity,
         final_price :final_price,
         sizeId:sizeId,
-        color:color
+        colorId:colorId
       })
     return data1
 }
 
 export const delete_basket_device= async (id) => {
   
-    const data1 = await $host.delete('api/device/basket/delete/' + id)
+    const data1 = await $authHost.delete('api/device/basket/delete/' + id)
     return data1
 }
 
 export const put_Color_1= async (id,color,quantity) => {
-    const data1 = await $host.put('api/device/color/put/' + id,{
+    const data1 = await $authHost.put('api/device/color/put/' + id,{
         color:color,
         quantity:quantity
      })
@@ -289,7 +291,7 @@ export const put_Color_1= async (id,color,quantity) => {
 }
 
 export const put_Order_Status= async (id,status) => {
-    const data1 = await $host.put('api/order/status/' + id,{
+    const data1 = await $authHost.put('api/order/status/' + id,{
         status:status,
       
      })
@@ -298,13 +300,13 @@ export const put_Order_Status= async (id,status) => {
 
 
 export const Order_getAllItem= async (id) => {
-    const data1 = await $host.get('api/order/getAllItem/' + id)
+    const data1 = await $authHost.get('api/order/getAllItem/' + id)
     return data1
 }
 
 
 export const getOneSize = async (size,deviceId) => {
-    const data1 = await $host.get('api/device/getOneSize',{ params: { size:size,deviceId:deviceId } })
+    const data1 = await $authHost.get('api/device/getOneSize',{ params: { size:size,deviceId:deviceId } })
     return data1
 }
 

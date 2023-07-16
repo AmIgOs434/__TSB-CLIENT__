@@ -24,7 +24,10 @@ const login2 = observer(()=>{
     var out = $('.out')
   var adminka = $('.adminka_')
   const user_ = localStorage.getItem('token')
-
+  var heart_ = $('.heart_')
+  var out = $('.out')
+  var home = $('.class')
+  var cla = $('.adminka_')
 
 
     const log = async () => {
@@ -37,19 +40,16 @@ const login2 = observer(()=>{
           user.setUser(data)
           user.setIsAuth(true)
   
-          var heart_ = $('.heart_')
-          var out = $('.out')
-          var home = $('.class')
-          var cla = $('.adminka_')
+
           home.addClass('display_')
           out.removeClass('display_')
           heart_.addClass('admin_display_on')
-          console.log(data.role)
+
           if(data.role==='ADMIN'){
             user.setIsAdmin(true)
             cla.removeClass('display_')
 
-            console.log(user.isAdmin)
+        
             history(ADMIN_ROUTE)
         
           }else{
@@ -69,6 +69,10 @@ const login2 = observer(()=>{
         data = await registration(email1, password1);
         user.setUser(data)
         user.setIsAuth(true)
+
+        home.addClass('display_')
+        out.removeClass('display_')
+        heart_.addClass('admin_display_on')
         history(FESHION_ROUTE)
     } catch (e) {
         alert(e.response.data.message)
@@ -103,7 +107,7 @@ const login2 = observer(()=>{
 
 <div type="submit" class="but0 sig"onClick={log} o >Войти</div>
 
-<div id='text_5'>Не зарегистрированы ? <br/> Присоединяйтесь к нам <img src="assets/img/product-img/212.svg"/>
+<div id='text_5'>Не зарегистрированы ? <br/> Присоединяйтесь к нам 
 </div>
 </form>
 

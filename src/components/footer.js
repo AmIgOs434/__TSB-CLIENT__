@@ -33,13 +33,13 @@ function NavBar() {
 
 <div class='container_footer'>
 
-<div class='ml'>
+<div >
   <div class='col-12 col-md-1'>
-<div class="vertical-line" ></div>
+<div class="vertical-line ml" ></div>
 </div>
 
 <div class='col-12 bord'>
-<div class='row'>
+<div class='row ml'>
 
 <div class='col-6'>
    <div id='text_2'>
@@ -60,17 +60,17 @@ function NavBar() {
         </div>
         
     </div>
+
+
+
 </div>
-
-
-
 
 </div>
 
 
 </div></div>
 <div class="horisontal-line horisontal-line1" ></div>
-<div class='col-9 mleft '>
+<div class='col-9 mleft1 '>
 
 <div class='row '>
 
@@ -124,8 +124,8 @@ function NavBar() {
    
 
 </div>
-
-<div class='display_flex mt-28 '>
+<div class='display_flex '>
+<div class='display_flex mt-28 width_75 '>
 <input type="email" id="inputPassword5"  placeholder="Email" class="form-control form_c in-put1" aria-labelledby="passwordHelpBlock"/>
 <div id='but_email'>
         <div class='display_Flex'>
@@ -134,7 +134,7 @@ function NavBar() {
         
     </div>
 </div>
-
+</div>
 
 </div>
 

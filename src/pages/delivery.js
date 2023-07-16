@@ -8,7 +8,7 @@ import set_message from './set_message';
 import $ from 'jquery'
 import Wpages from './wpages';
 import { CreateOrder, fetch_Basket_by_userId, getOrder, get_item_order, putOrder, put_Color } from '../http/deviceAPI';
-import { GetUser, PostMessage, fetchUserByEmail, get_peomo_by, putFIO, putPhone, putUserEmail, putUserStatus } from '../http/userAPI';
+import { GetUser, PostMessage, fetchUserByEmail, get_peomo_by, putEmail, putFIO, putPhone, putUserEmail, putUserStatus } from '../http/userAPI';
 
 function Delivery() {
     const [userId,SetuserId,SetuserIdRef] = useState(null)
@@ -97,7 +97,8 @@ const randomNumberInRange = (min, max) => {
 const send = async() =>{
 
     const user__ =  await fetchUserByEmail(SetuserIdRef.current,SetEmailRef.current) 
-    if(user__.data===null){
+
+    if(user__.data===null||user__.data.status==="Не подтверждён"){
     form.prop("disabled",true)
     otpravka.addClass('display_')
     otpravka_off.addClass('display_flex_')
@@ -114,8 +115,9 @@ const comparison = async() =>{
     
    
     if (SetKodRef.current===parseInt(SetKod_klientRef.current)){
+        const changed_user = await putEmail(SetuserIdRef.current,SetEmailRef.current) 
         const user__ =  await fetchUserByEmail(SetuserIdRef.current,SetEmailRef.current) 
-       
+        
             svg2_.addClass('display_flex')
             await putUserStatus(SetuserIdRef.current)
             await putUserEmail(SetuserIdRef.current,SetEmailRef.current)  
@@ -170,7 +172,7 @@ const comparison = async() =>{
 
 
 useEffect(()=>{
-
+    getUser()
 
      
     if(storedToken===null){
@@ -201,6 +203,8 @@ await axios.post(`https://api.telegram.org/bot6019994450:AAEpHDvXuaLpyTfZ4QJLqLO
 
 }
     const createOrder = async() => {
+        const user1 = await GetUser(userId)
+        
          if(!SetFIORef.current){
           return  set_message('Введите ваше ФИО','error')
             
@@ -208,7 +212,8 @@ await axios.post(`https://api.telegram.org/bot6019994450:AAEpHDvXuaLpyTfZ4QJLqLO
          if(!SetPhoneRef.current){
             return  set_message('Введите ваш телефон','error')
          }
-         if(!email){
+         
+         if(!SetEmailRef.current){
             return  set_message('Введите ваш email','error')
          }
          if(!address){
@@ -219,18 +224,24 @@ await axios.post(`https://api.telegram.org/bot6019994450:AAEpHDvXuaLpyTfZ4QJLqLO
             return set_message('Подтвердите адрес электронной почты ,чтобы продолжить','error')
          }
 
-        
+       
         const basket = await fetch_Basket_by_userId(SetuserIdRef.current) 
         const basketId = basket.id
         
-        const user1 = await GetUser(userId)
-        const promo1 = await get_peomo_by(user1.data.promocode)
-        const skidka= (1-(promo1.data.skidka/100))
+        
+        var skidka = 1
+        if(user1.data.promocode){
+            const promo1 = await get_peomo_by(user1.data.promocode)
+            var skidka= (1-(promo1.data.skidka/100))
+        }
+    
+
+
         const final_price =Math.round(basket.final_price*skidka) 
    
 
-    const order = await CreateOrder(SetFIORef.current,address,final_price,email,SetPhoneRef.current,status,comment,SetuserIdRef.current)
-
+     const order = await CreateOrder(SetFIORef.current,address,final_price,email,SetPhoneRef.current,status,comment,SetuserIdRef.current)
+ 
 
     const device = await putOrder(basketId,order.data.id) 
     const devic = await getOrder(order.data.id)
@@ -254,7 +265,8 @@ await axios.post(`https://api.telegram.org/bot6019994450:AAEpHDvXuaLpyTfZ4QJLqLO
  Promise.all(response.data.map(async id => {
     let response1
     try {
-     response1 = await put_Color(id.quantity)
+     response1 = await put_Color(id.colorId,id.quantity)
+
     } catch (err) {
       return err;
     }
@@ -264,10 +276,11 @@ await axios.post(`https://api.telegram.org/bot6019994450:AAEpHDvXuaLpyTfZ4QJLqLO
 })
 
 set_message('Заказ успешно сформирован !','completed')
-navigate(ORDER_ROUTE)
+
     const message = 
     `Новый заказ!✅%0AFIO: ${FIO}%0AТелефон: ${phone}%0AСумма: ${final_price}₽%0AАдрес: ${address}%0AКомментарий: ${comment} `
     getMessage(message)
+    navigate(ORDER_ROUTE)
     }
 
 
