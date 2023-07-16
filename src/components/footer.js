@@ -39,7 +39,7 @@ function NavBar() {
 </div>
 
 <div class='col-12 bord'>
-<div class='row ml'>
+<div class='row ml ml1'>
 
 <div class='col-6'>
    <div id='text_2'>
@@ -69,8 +69,8 @@ function NavBar() {
 
 
 </div></div>
-<div class="horisontal-line horisontal-line1" ></div>
-<div class='col-9 mleft1 '>
+<div class="horisontal-line horisontal-line1 ml1" ></div>
+<div class='col-9 mleft1 ml1 '>
 
 <div class='row '>
 
