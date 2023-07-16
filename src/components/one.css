@@ -220,6 +220,9 @@ display:none;
 .btn-outline-danger {
     margin-top: 0px;
 }
+.ml1{
+	position: relative;
+}
 .btn-outline-success{
 	margin-top: 0px;
 }
@@ -3621,6 +3624,9 @@ img {
 	.marl {
 		padding-left: 200px;
 		
+	}
+        .ml1 {
+		display: none;
 	}
 	.container_basket {
 	
