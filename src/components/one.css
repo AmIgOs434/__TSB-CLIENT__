@@ -3941,7 +3941,19 @@ img {
 	}
 }
 @media only screen and (max-width: 420px) {
-
+.mb-3{ 
+	width:80%
+}
+	
+element.style {
+}
+form {
+    background-color: #00000009;
+    justify-content: normal;
+}
+form {
+    padding: 0 0px;
+}
 	.float {
 
 		margin-left:-12px
