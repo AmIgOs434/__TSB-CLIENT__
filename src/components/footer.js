@@ -85,7 +85,7 @@ function NavBar() {
 <div class='col-2 '> 
 <div class='dopolni1'>КЛИЕНТСКИЙ СЕРВИС</div>
 <h5>Вопросы и ответы</h5>
-<h5 onClick={() => navigate(TSB_ROUTE)} >Условия доставки</h5>
+<h5  >Условия доставки</h5>
 <h5>Способы оплаты</h5>
 <h5>Условия возврата</h5>
 
