@@ -187,8 +187,7 @@ function NavBar() {
 <div class="col-md-12 text-center">
     <p>
         
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by, distributed by ThemeWagon
-
+TSB 2023 &copy Все права защищены
     </p>
 </div>
 </div>
