@@ -74,7 +74,7 @@ const Fashion = ()=>{
                 <button class='color5 choose svg2 change_img admin_display_off' onClick={set}  style={{top: '100px'}}>
                 </button>
              
-  <video class='video2'  src={video} loop  autoplay='true' muted='true'>
+  <video class='video2' playsinline src={video} loop  autoplay='true' muted='true'>
    </video>
 
 <div class="but_1 " ><a href="/" class="ddott ml-5 ">КОЛЛЕКЦИЯ</a><a href="#" class="ddott " >ОБРАЗЫ</a></div>
